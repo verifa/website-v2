@@ -76,7 +76,7 @@ jobs:
   destroy:
     runs-on: ubuntu-latest
     # Run if PR is closed.
-    if: github.event.pull_request.closed_at != null
+    if: contains( github.event.pull_request.labels.*.name, 'preview') && github.event.pull_request.closed_at != null
     permissions:
       contents: "read"
       id-token: "write"
